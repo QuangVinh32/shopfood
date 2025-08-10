@@ -53,28 +53,31 @@ public class WebSecurityConfiguration {
                         .requestMatchers(HttpMethod.GET,
                                 "/pages/**",
                                 "/auth/**",
-                                "/api/products/**", // Cho phép tất cả GET /products/**
+                                "/api/products/**", // public GET
                                 "/api/v1/carts/summary"
                         ).permitAll()
 
-                        // Cart actions không yêu cầu login (nếu muốn public)
+                        // Cart actions public (nếu muốn)
                         .requestMatchers(HttpMethod.POST, "/api/v1/carts/add/{productId}", "/api/v1/carts/remove/{productId}").permitAll()
 
                         // Admin-only
+                        .requestMatchers(HttpMethod.POST, "/api/v1/products/**").hasAuthority("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/products/**").hasAuthority("ADMIN")
 
                         // User-only
-                        .requestMatchers(HttpMethod.DELETE, "/api/v1/carts/clear", "/api/v1/carts/remove/{id}", "/api/v1/carts/delete/{id}").hasAuthority("USER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/carts/clear", "/api/v1/carts/remove/{id}", "/api/v1/carts/delete/{id}")
+                        .hasAuthority("USER")
 
-                        // Authenticated users
-                        .requestMatchers(HttpMethod.POST, "/api/v1/products/**", "/api/v1/orders/**", "/api/v1/carts/**", "/api/v1/categories/**", "/api/v1/type/**")
+                        // Authenticated users (trừ products POST đã set ở trên)
+                        .requestMatchers(HttpMethod.POST, "/api/v1/orders/**", "/api/v1/carts/**", "/api/v1/categories/**", "/api/v1/type/**")
                         .hasAnyAuthority("ADMIN", "MANAGER", "USER")
                         .requestMatchers(HttpMethod.PUT, "/api/v1/products/**", "/api/v1/orders/**", "/api/v1/carts/**", "/api/v1/categories/**", "/api/v1/type/**")
                         .hasAnyAuthority("ADMIN", "MANAGER", "USER")
 
-                        // All others require authentication
+                        // All others
                         .anyRequest().authenticated()
                 )
+
                 .httpBasic(withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -89,7 +92,8 @@ public class WebSecurityConfiguration {
         configuration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:3000",
                 "http://localhost:3001",
-                "http://localhost:3002"
+                "http://localhost:3002",
+                "http://localhost:5173"
         ));
         configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));

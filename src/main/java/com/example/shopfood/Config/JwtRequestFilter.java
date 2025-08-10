@@ -29,11 +29,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (!StringUtils.containsAnyIgnoreCase(request,
                 "/api/login",
                 "/api/register",
-                "/api/products",
-                "/api/v1/product/get-all",
-                "/api/v1/product/{id}",
-                "/api/v1/product/find-all-reviews",
-                "/api/v1/product/find-by-id"
+//                "/api/products",
+                "/api/products/get-all",
+                "/api/products/{id}",
+                "/api/products/find-all-reviews",
+                "/api/products/find-by-id"
         )) {
             if (this.jwtTokenUtils.checkToken(token, httpServletResponse, httpServletRequest)) {
                 LoginDTO loginDto = this.jwtTokenUtils.parseAccessToken(token);

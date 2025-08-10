@@ -83,7 +83,7 @@ public class VoucherService implements IVoucherService {
 
     @Override
     @Transactional
-    public Voucher applyVoucher(String code, Order order) {
+    public void applyVoucher(String code, Order order) {
         Voucher voucher = voucherRepository.findByCode(code)
                 .orElseThrow(() -> new RuntimeException("Voucher không tồn tại."));
 
@@ -123,7 +123,6 @@ public class VoucherService implements IVoucherService {
         voucherRepository.save(voucher);
         orderRepository.save(order);
 
-        return voucher;
     }
 
 
