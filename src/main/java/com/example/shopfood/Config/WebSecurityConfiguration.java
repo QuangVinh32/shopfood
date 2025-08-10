@@ -36,7 +36,6 @@ public class WebSecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    // Cấu hình AuthenticationProvider
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -49,13 +48,31 @@ public class WebSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authz -> authz
+                        // Public APIs
                         .requestMatchers(HttpMethod.POST, "/api/register", "/api/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/pages/**", "/auth/**", "/api/v1/products/get-all", "/api/v1/products/{id}", "/api/v1/product/v1/{id}", "/api/v1/carts/summary").permitAll()
+                        .requestMatchers(HttpMethod.GET,
+                                "/pages/**",
+                                "/auth/**",
+                                "/api/products/**", // Cho phép tất cả GET /products/**
+                                "/api/v1/carts/summary"
+                        ).permitAll()
+
+                        // Cart actions không yêu cầu login (nếu muốn public)
                         .requestMatchers(HttpMethod.POST, "/api/v1/carts/add/{productId}", "/api/v1/carts/remove/{productId}").permitAll()
+
+                        // Admin-only
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/products/**").hasAuthority("ADMIN")
+
+                        // User-only
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/carts/clear", "/api/v1/carts/remove/{id}", "/api/v1/carts/delete/{id}").hasAuthority("USER")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/products/**", "/api/v1/orders/**", "/api/v1/carts/**", "/api/v1/categories/**", "/api/v1/type/**").hasAnyAuthority("ADMIN", "MANAGER", "USER")
-                        .requestMatchers(HttpMethod.PUT, "/api/v1/products/**", "/api/v1/orders/**", "/api/v1/carts/**", "/api/v1/categories/**", "/api/v1/type/**").hasAnyAuthority("ADMIN", "MANAGER", "USER")
+
+                        // Authenticated users
+                        .requestMatchers(HttpMethod.POST, "/api/v1/products/**", "/api/v1/orders/**", "/api/v1/carts/**", "/api/v1/categories/**", "/api/v1/type/**")
+                        .hasAnyAuthority("ADMIN", "MANAGER", "USER")
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/products/**", "/api/v1/orders/**", "/api/v1/carts/**", "/api/v1/categories/**", "/api/v1/type/**")
+                        .hasAnyAuthority("ADMIN", "MANAGER", "USER")
+
+                        // All others require authentication
                         .anyRequest().authenticated()
                 )
                 .httpBasic(withDefaults())
@@ -66,19 +83,20 @@ public class WebSecurityConfiguration {
         return http.build();
     }
 
-
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:3001", "http://localhost:3002"));
+        configuration.setAllowedOrigins(Arrays.asList(
+                "http://localhost:3000",
+                "http://localhost:3001",
+                "http://localhost:3002"
+        ));
         configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-
         return source;
     }
-
 }
