@@ -29,9 +29,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (!StringUtils.containsAnyIgnoreCase(request,
                 "/api/login",
                 "/api/register",
-//                "/api/products",
+                "/api/products/user",
                 "/api/products/get-all",
-                "/api/products/{id}",
+//                "/api/products/{id}",
                 "/api/products/find-all-reviews",
                 "/api/products/find-by-id"
         )) {
@@ -47,7 +47,5 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         } else {
             filterChain.doFilter(httpServletRequest, httpServletResponse);
         }
-
-
     }
 }

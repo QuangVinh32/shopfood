@@ -46,7 +46,7 @@ public class ProductService implements IProductService {
             Product product = optionalProduct.get();
             ProductForAdmin dto = new ProductForAdmin();
             dto.setProductName(product.getProductName());
-            dto.setProductImage(product.getProductImage());
+//            dto.setProductImage(product.getProductImage());
             dto.setPrice(product.getPrice());
             dto.setDiscount(product.getDiscount());
             dto.setQuantity(product.getQuantity());
@@ -60,9 +60,9 @@ public class ProductService implements IProductService {
 
     public void createProduct(CreateProduct createProduct) throws Exception {
         Category category = categoryRepository.findById(createProduct.getCategoryId()).orElseThrow(() -> new EntityNotFoundException("Category not found with id: " + createProduct.getCategoryId()));
-        String fileName = fileService.uploadImage(createProduct.getProductImage());
+//        String fileName = fileService.uploadImage(createProduct.getProductImage());
         Product product = new Product();
-        product.setProductImage(fileName);
+//        product.setProductImage(fileName);
         product.setProductName(createProduct.getProductName());
         product.setPrice(createProduct.getPrice());
         product.setDiscount(createProduct.getDiscount());
@@ -79,9 +79,9 @@ public class ProductService implements IProductService {
             existingProduct.setProductName(updateProduct.getProductName());
         }
 
-        if (updateProduct.getProductImage() != null) {
-            existingProduct.setProductImage(fileName);
-        }
+//        if (updateProduct.getProductImage() != null) {
+//            existingProduct.setProductImage(fileName);
+//        }
 
         if (updateProduct.getPrice() != null) {
             existingProduct.setPrice(updateProduct.getPrice());

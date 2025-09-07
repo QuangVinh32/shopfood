@@ -22,10 +22,10 @@ public class Product {
             length = 255
     )
     private String productName;
-    @Column(
-            name = "product_image"
-    )
-    private String productImage;
+//    @Column(
+//            name = "product_image"
+//    )
+//    private String productImage;
     @Column(
             name = "description",
             columnDefinition = "TEXT"
@@ -57,4 +57,10 @@ public class Product {
             cascade = {CascadeType.ALL}
     )
     private List<Review> reviews;
+
+    @OneToMany(
+            mappedBy = "product",
+            cascade = {CascadeType.ALL}
+    )
+    private List<ProductImage> productImages;
 }

@@ -45,11 +45,9 @@ public class VoucherService implements IVoucherService {
                 uv.setUser(user);
                 uv.setVoucher(savedVoucher);
                 uv.setAssignedAt(new Date());
-
                 userVoucherRepository.save(uv);
             }
         }
-
         return savedVoucher;
     }
 
@@ -124,8 +122,6 @@ public class VoucherService implements IVoucherService {
         orderRepository.save(order);
 
     }
-
-
 
     @Override
     public Optional<Voucher> getVoucherByCode(String code) {

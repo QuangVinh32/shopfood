@@ -18,7 +18,7 @@ public class ProductForUser {
 
     public ProductForUser(Product product, List<Review> reviews) {
         this.productName = product.getProductName();
-        this.productImage = product.getProductImage();
+//        this.productImage = product.getProductImage();
         this.price = product.getPrice();
         this.discount = product.getDiscount();
         this.quantity = product.getQuantity();

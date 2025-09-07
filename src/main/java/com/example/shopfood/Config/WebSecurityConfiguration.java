@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -47,17 +48,17 @@ public class WebSecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .cors(withDefaults()) // 🔹 Bật CORS config bạn đã định nghĩa bên dưới
                 .authorizeHttpRequests(authz -> authz
                         // Public APIs
                         .requestMatchers(HttpMethod.POST, "/api/register", "/api/login").permitAll()
                         .requestMatchers(HttpMethod.GET,
                                 "/pages/**",
                                 "/auth/**",
-                                "/api/products/**", // public GET
+                                "/api/products/**",
                                 "/api/v1/carts/summary"
                         ).permitAll()
 
-                        // Cart actions public (nếu muốn)
                         .requestMatchers(HttpMethod.POST, "/api/v1/carts/add/{productId}", "/api/v1/carts/remove/{productId}").permitAll()
 
                         // Admin-only
@@ -68,23 +69,22 @@ public class WebSecurityConfiguration {
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/carts/clear", "/api/v1/carts/remove/{id}", "/api/v1/carts/delete/{id}")
                         .hasAuthority("USER")
 
-                        // Authenticated users (trừ products POST đã set ở trên)
+                        // Authenticated users
                         .requestMatchers(HttpMethod.POST, "/api/v1/orders/**", "/api/v1/carts/**", "/api/v1/categories/**", "/api/v1/type/**")
                         .hasAnyAuthority("ADMIN", "MANAGER", "USER")
                         .requestMatchers(HttpMethod.PUT, "/api/v1/products/**", "/api/v1/orders/**", "/api/v1/carts/**", "/api/v1/categories/**", "/api/v1/type/**")
                         .hasAnyAuthority("ADMIN", "MANAGER", "USER")
 
-                        // All others
                         .anyRequest().authenticated()
                 )
-
                 .httpBasic(withDefaults())
-                .csrf(csrf -> csrf.disable())
+                .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
+
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
@@ -93,7 +93,8 @@ public class WebSecurityConfiguration {
                 "http://localhost:3000",
                 "http://localhost:3001",
                 "http://localhost:3002",
-                "http://localhost:5173"
+                "http://localhost:5173",
+                "http://localhost:5174"
         ));
         configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));

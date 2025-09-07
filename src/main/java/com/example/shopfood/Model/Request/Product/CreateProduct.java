@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Data
 public class CreateProduct {
     private String productName;
-    private MultipartFile productImage;
+//    private MultipartFile productImage;
     private String description;
     private Double price;
     private Integer discount;
