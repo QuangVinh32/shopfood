@@ -1,6 +1,9 @@
 package com.example.shopfood.Model.Entity;
 import jakarta.persistence.*;
+import lombok.Data;
+
 @Entity
+@Data
 @Table(name = "product_image")
 public class ProductImage {
     @Id
@@ -9,9 +12,13 @@ public class ProductImage {
     )
     private Integer productImageId;
     @Column(
-            name = "product_image"
+            name = "product_image_name"
     )
-    private String productImage;
+    private String productImageName;
+    @Column(
+            name = "product_image_path"
+    )
+    private String productImagePath;
 
     @ManyToOne
     @JoinColumn(name = "product_id")

@@ -1,6 +1,5 @@
 package com.example.shopfood.Model.Entity;
 import lombok.Data;
-
 import jakarta.persistence.*;
 
 @Data
@@ -14,10 +13,13 @@ public class Category {
             strategy = GenerationType.IDENTITY
     )
     private Integer categoryId;
+    @Enumerated(EnumType.STRING)
     @Column(
-            name = "category_name"
+            name = "category_status",
+            nullable = false,
+            length = 15
     )
-    private String categoryName;
+    private CategoryStatus categoryStatus;
     @Column(
             name = "category_image"
     )

@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 public class ProductForUser {
     private String productName;
-    private String productImage;
+//    private String productImage;
     private Double price;
     private Integer discount;
     private Integer quantity;

@@ -2,6 +2,7 @@ package com.example.shopfood.Controller;
 import com.example.shopfood.Model.DTO.ProductForAdmin;
 import com.example.shopfood.Model.DTO.ProductForUser;
 import com.example.shopfood.Model.Entity.Product;
+import com.example.shopfood.Model.Entity.ProductImage;
 import com.example.shopfood.Model.Request.Product.CreateProduct;
 import com.example.shopfood.Model.Request.Product.FilterProduct;
 import com.example.shopfood.Model.Request.Product.UpdateProduct;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 @RestController
 @RequestMapping({"/api/products"})
@@ -30,12 +32,36 @@ public class ProductController {
     @Autowired
     private ModelMapper mapper;
 
-    @GetMapping({"/get-all"})
-    public ResponseEntity<Page<ProductForAdmin>> findAllProductPage(Pageable pageable, @ModelAttribute FilterProduct filterProduct) {
+    @GetMapping("/get-all")
+    public ResponseEntity<Page<ProductForAdmin>> findAllProductPage(
+            Pageable pageable,
+            @ModelAttribute FilterProduct filterProduct) {
+
         Page<Product> productsPage = productService.getAllProductsPage(pageable, filterProduct);
-        Page<ProductForAdmin> productForUserPage = productsPage.map((product) -> mapper.map(product, ProductForAdmin.class));
-        return ResponseEntity.ok(productForUserPage);
+
+        Page<ProductForAdmin> productForAdminPage = productsPage.map(product -> {
+            ProductForAdmin dto = new ProductForAdmin();
+            dto.setProductName(product.getProductName());
+            dto.setDescription(product.getDescription());
+            dto.setPrice(product.getPrice());
+            dto.setDiscount(product.getDiscount());
+            dto.setQuantity(product.getQuantity());
+            dto.setCategoryId(product.getCategory().getCategoryId());
+
+            // ✅ Chuyển path thật -> URL public
+            List<String> imageUrls = product.getProductImages()
+                    .stream()
+                    .map(img -> "http://localhost:8080/files/image/" + img.getProductImageName())
+                    .toList();
+
+            dto.setProductImages(imageUrls);
+            return dto;
+        });
+
+        return ResponseEntity.ok(productForAdminPage);
     }
+
+
 
     @PostMapping
     public ResponseEntity<String> createProduct(@ModelAttribute CreateProduct createProduct) {

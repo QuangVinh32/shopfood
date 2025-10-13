@@ -32,6 +32,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 "/api/products/user",
                 "/api/products/get-all",
 //                "/api/products/{id}",
+                "/files/image",
                 "/api/products/find-all-reviews",
                 "/api/products/find-by-id"
         )) {

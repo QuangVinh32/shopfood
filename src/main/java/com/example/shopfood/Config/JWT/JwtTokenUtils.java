@@ -1,5 +1,4 @@
 package com.example.shopfood.Config.JWT;
-
 import com.alibaba.fastjson2.JSON;
 import com.example.shopfood.Exception.AppException;
 import com.example.shopfood.Model.DTO.LoginDTO;
@@ -17,7 +16,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
@@ -32,7 +30,6 @@ public class JwtTokenUtils {
     private static final String SECRET = "my-super-secret-key-which-is-at-least-64-characters-long-1234567890";
     private static final String PREFIX_TOKEN = "Bearer";
     private static final String AUTHORIZATION = "Authorization";
-
     private static final Key SIGNING_KEY = Keys.hmacShaKeyFor(SECRET.getBytes(StandardCharsets.UTF_8));
 
     @Autowired
@@ -75,7 +72,6 @@ public class JwtTokenUtils {
                 String user = claims.getSubject();
                 Role role = Role.valueOf(claims.get("authorities").toString());
                 String userAgent = claims.get("user-Agent").toString();
-
                 loginDto.setUsername(user);
                 loginDto.setRole(role);
                 loginDto.setUserAgent(userAgent);
