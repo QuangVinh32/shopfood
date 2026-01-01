@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface IVoucherService {
     Voucher createVoucher(CreateVoucher request);
     List<Voucher> getAll();
-    void applyVoucher(String code, Order order);
+    Voucher applyVoucher(String code, Order order);
     Optional<Voucher> getVoucherByCode(String code);
     void deleteVoucher(Integer id);
 }

@@ -1,4 +1,6 @@
 package com.example.shopfood.Config;
+
+
 import com.example.shopfood.Config.JWT.JwtTokenUtils;
 import com.example.shopfood.Model.DTO.LoginDTO;
 import jakarta.servlet.FilterChain;
@@ -13,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,27 +29,18 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest httpServletRequest, @NotNull HttpServletResponse httpServletResponse, @NotNull FilterChain filterChain) throws ServletException, IOException {
         String token = httpServletRequest.getHeader("Authorization");
         String request = httpServletRequest.getRequestURI();
-        if (!StringUtils.containsAnyIgnoreCase(request,
-                "/api/login",
-                "/api/register",
-                "/api/products/user",
-                "/api/products/get-all",
-//                "/api/products/{id}",
-                "/files/image",
-                "/api/products/find-all-reviews",
-                "/api/products/find-by-id"
-        )) {
+        if (!StringUtils.containsAnyIgnoreCase(request, new CharSequence[]{"/api/login"}) && !StringUtils.containsAnyIgnoreCase(request, new CharSequence[]{"/api/register"}) && !StringUtils.containsAnyIgnoreCase(request, new CharSequence[]{"/api/v1/product/get-all"}) && !StringUtils.containsAnyIgnoreCase(request, new CharSequence[]{"/api/v1/product/find-all-reviews"}) && !StringUtils.containsAnyIgnoreCase(request, new CharSequence[]{"/api/v1/product/find-by-id"})) {
             if (this.jwtTokenUtils.checkToken(token, httpServletResponse, httpServletRequest)) {
                 LoginDTO loginDto = this.jwtTokenUtils.parseAccessToken(token);
                 List<GrantedAuthority> authorities = new ArrayList<>();
                 authorities.add(loginDto.getRole());
-                UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(loginDto.getUsername(), null, authorities);
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(loginDto.getUsername(), (Object)null, authorities);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
             }
         } else {
             filterChain.doFilter(httpServletRequest, httpServletResponse);
         }
+
     }
 }
