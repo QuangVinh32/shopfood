@@ -55,7 +55,7 @@ public class OrderService implements IOrderService {
 
         OrderDTO dto = new OrderDTO();
         dto.setCreatedAt(order.getCreatedAt());
-        dto.setStatus(order.getOrderStatus());
+        dto.setStatus(order.getStatus());
         dto.setTotalAmount(order.getTotalAmount());
 
         List<OrderDetailDTO> detailDTOs = order.getOrderDetails().stream().map(detail -> {
@@ -87,7 +87,7 @@ public class OrderService implements IOrderService {
 
         Order order = new Order();
         order.setCreatedAt(new Date());
-        order.setOrderStatus(OrderStatus.PENDING);
+        order.setStatus(OrderStatus.PENDING);
         order.setUser(user);
         orderRepository.save(order);
 
@@ -133,7 +133,7 @@ public class OrderService implements IOrderService {
         Order order = orderRepository.findById(orderID)
                 .orElseThrow(() -> new Exception("Order not found"));
 
-        if (updateOrder.getStatus() == OrderStatus.PENDING && order.getOrderStatus() != OrderStatus.PENDING) {
+        if (updateOrder.getStatus() == OrderStatus.PENDING && order.getStatus() != OrderStatus.PENDING) {
             for (OrderDetail orderDetail : order.getOrderDetails()) {
                 Product product = orderDetail.getProduct();
                 product.setQuantity(product.getQuantity() + orderDetail.getQuantity());
@@ -141,7 +141,7 @@ public class OrderService implements IOrderService {
             }
         }
 
-        order.setOrderStatus(updateOrder.getStatus());
+        order.setStatus(updateOrder.getStatus());
         Order savedOrder = orderRepository.save(order);
 
         List<OrderDetailDTO> detailDTOs = savedOrder.getOrderDetails()
@@ -160,7 +160,7 @@ public class OrderService implements IOrderService {
         return new OrderDTO(
                 savedOrder.getOrderId(),
                 savedOrder.getTotalAmount(),
-                savedOrder.getOrderStatus(),
+                savedOrder.getStatus(),
                 savedOrder.getCreatedAt(),
                 savedOrder.getUser().getUserId(),
                 detailDTOs

@@ -5,37 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bac90f6e-62c9-4ec6-bb08-54ee9196414a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Controller/ProductImageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/CategoryStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Repository/ProductImageRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/ProductImageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/IProductImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Config/JWT/JwtTokenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Config/JWT/JwtTokenUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Config/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Config/JwtRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Config/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Config/WebSecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Controller/FileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Controller/ProductImageController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/DTO/ProductForAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/DTO/ProductForAdmin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/DTO/ProductForUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/DTO/ProductForUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/DTO/UserForAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/DTO/UserForAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/Cart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/CartDetailPK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/CartDetailPK.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/CategoryStatus.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/ProductImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Entity/ProductImage.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Request/Category/CreateCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Request/Category/CreateCategory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Request/Category/UpdateCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Request/Category/UpdateCategory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Request/Product/CreateProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Request/Product/CreateProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Request/Product/UpdateProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Model/Request/Product/UpdateProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Repository/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Repository/FileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Repository/ProductImageRepository.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/BannerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/BannerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/CategoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/FileService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/ProductImageService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/VoucherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/Class/VoucherService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/IFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/IFileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/IProductImageService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/IVoucherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Service/IVoucherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/ShopFoodApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/ShopFoodApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Specification/ProductSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shopfood/Specification/ProductSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/shopfood/ShopfoodApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/shopfood/ShopfoodApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +57,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
-        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -69,22 +80,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ShopFoodApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ShopfoodApplication.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ADMIN/Desktop/Project/New folder/shopfood&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ShopFoodApplication.executor": "Run",
+    "Application.ShopfoodApplication.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/File Java Spring/shopfood",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.shopfood.Service.Class" />

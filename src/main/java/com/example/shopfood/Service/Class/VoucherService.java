@@ -45,9 +45,11 @@ public class VoucherService implements IVoucherService {
                 uv.setUser(user);
                 uv.setVoucher(savedVoucher);
                 uv.setAssignedAt(new Date());
+
                 userVoucherRepository.save(uv);
             }
         }
+
         return savedVoucher;
     }
 
@@ -81,7 +83,7 @@ public class VoucherService implements IVoucherService {
 
     @Override
     @Transactional
-    public void applyVoucher(String code, Order order) {
+    public Voucher applyVoucher(String code, Order order) {
         Voucher voucher = voucherRepository.findByCode(code)
                 .orElseThrow(() -> new RuntimeException("Voucher không tồn tại."));
 
@@ -121,7 +123,10 @@ public class VoucherService implements IVoucherService {
         voucherRepository.save(voucher);
         orderRepository.save(order);
 
+        return voucher;
     }
+
+
 
     @Override
     public Optional<Voucher> getVoucherByCode(String code) {

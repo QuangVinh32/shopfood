@@ -24,11 +24,11 @@ public class Order {
     private Integer totalAmount;
     @Enumerated(EnumType.STRING)
     @Column(
-            name = "order_status",
+            name = "status",
             nullable = false,
             length = 15
     )
-    private OrderStatus orderStatus;
+    private OrderStatus status;
     @CreationTimestamp
     @Column(
             name = "create_at",

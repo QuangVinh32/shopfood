@@ -87,6 +87,7 @@ public class UserService implements IUserService, UserDetailsService {
         users.setPhone(userRequest.getPhone());
         users.setRole(Role.MANAGER);
         users.setFullName(userRequest.getFullName());
+
         userRepository.save(users);
     }
 
@@ -102,6 +103,7 @@ public class UserService implements IUserService, UserDetailsService {
         users.setFullName(userRequest.getFullName());
         users.setEmail(userRequest.getEmail());
         users.setAddress(userRequest.getAddress());
+
         return userRepository.save(users);
     }
 

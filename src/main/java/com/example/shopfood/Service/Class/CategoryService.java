@@ -34,8 +34,8 @@ public class CategoryService implements ICategoryService {
 
     public Category updateCategory(int categoryId, UpdateCategory request) throws IOException {
         Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new EntityNotFoundException("Category not found with id: " + categoryId));
-        if (request.getCategoryStatus() != null) {
-            category.setCategoryStatus(request.getCategoryStatus());
+        if (request.getCategoryName() != null && !request.getCategoryName().isEmpty()) {
+            category.setCategoryName(request.getCategoryName());
         }
 
         if (request.getCategoryImage() != null && !request.getCategoryImage().isEmpty()) {
@@ -49,7 +49,7 @@ public class CategoryService implements ICategoryService {
     public void createCategory(CreateCategory request) throws IOException {
         String fileName = fileService.uploadImage(request.getCategoryImage());
         Category category = new Category();
-        category.setCategoryStatus(request.getCategoryStatus());
+        category.setCategoryName(request.getCategoryName());
         category.setCategoryImage(fileName);
         categoryRepository.save(category);
     }

@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 public class ProductForUser {
     private String productName;
-//    private String productImage;
+    private String productImage;
     private Double price;
     private Integer discount;
     private Integer quantity;
@@ -18,7 +18,7 @@ public class ProductForUser {
 
     public ProductForUser(Product product, List<Review> reviews) {
         this.productName = product.getProductName();
-//        this.productImage = product.getProductImage();
+        this.productImage = product.getProductImage();
         this.price = product.getPrice();
         this.discount = product.getDiscount();
         this.quantity = product.getQuantity();
